@@ -1,0 +1,182 @@
+---
+import Layout from '../components/Layout.astro';
+import StickyModelsNav from '../components/StickyModelsNav.tsx';
+
+const models = [
+  {
+    id: 'aurora',
+    name: 'Aurora',
+    tagline: 'The pure line of power and serenity.',
+    description: 'Sculpted silhouettes and a quiet hum make the Aurora an instrument of contemplative performance. Built for those who prefer intensity with impeccable restraint.',
+    specs: { hp: '620 hp', torque: '664 lb-ft', topSpeed: '205 mph', acceleration: '3.1s' },
+    images: {
+      big: '/images/aurora/big.webp',
+      details: [
+        '/images/aurora/Brake overlay final.webp',
+        '/images/aurora/Vantage S Seats All Models.webp',
+        '/images/aurora/Vantage S Side All Models.webp'
+      ]
+    }
+  },
+  {
+    id: 'elysian',
+    name: 'Elysian',
+    tagline: 'Quiet refinement in every detail.',
+    description: 'Elysian focuses on the subtle digital comforts — invisibly enhancing the experience while preserving a minimal atmosphere. Thoughtful material choices and a human-centered interface maintain calm sophistication under every surface.',
+    specs: { hp: '420 hp', torque: '400 lb-ft', topSpeed: '170 mph', acceleration: '5.1s' },
+    images: {
+      big: '/images/elysian/big.webp',
+      details: [
+        '/images/elysian/DB12 S All Models Exhaust.webp',
+        '/images/elysian/DB12 S All Models Hero detail.webp',
+        '/images/elysian/Db12 S All Models Wing.webp'
+      ]
+    }
+  },
+  {
+    id: 'nocturne',
+    name: 'Nocturne',
+    tagline: 'Darkness refined — beauty in restraint.',
+    description: 'Nocturne is composed around the intimacy of the drive: quiet, focused, and unmistakable in presence. Its cabin is intentionally restrained and tuned to reduce visual noise, allowing the drive to be the centerpiece.',
+    specs: { hp: '560 hp', torque: '520 lb-ft', topSpeed: '195 mph', acceleration: '3.6s' },
+    images: {
+      big: '/images/nocturne/big.webp',
+      details: [
+        '/images/nocturne/240814_AM370_SHOT_03_REAR_100_RGB_72.webp',
+        '/images/nocturne/Image20240819140622_side.webp',
+        '/images/nocturne/Vanquish Seat All Models Trio.webp'
+      ]
+    }
+  },
+  {
+    id: 'solstice',
+    name: 'Solstice',
+    tagline: 'Subtle elegance in kinetic form.',
+    description: 'Solstice pairs a clean aesthetic with measured power — an extension of thoughtful engineering and beautiful materials. It embraces quiet confidence with modern hybrid efficiency and refined finishes.',
+    specs: { hp: '480 hp', torque: '430 lb-ft', topSpeed: '180 mph', acceleration: '4.2s' },
+    images: {
+      big: '/images/solstice/big.webp',
+      details: [
+        '/images/solstice/DBX S Alloy All Models.webp',
+        '/images/solstice/DBX S Exhaust All Models.webp',
+        '/images/solstice/DBX S Seat All Models.webp'
+      ]
+    }
+  },
+  {
+    id: 'veritas',
+    name: 'Veritas',
+    tagline: 'Absolute truth in performance.',
+    description: 'Veritas is designed to be the understated apex of performance — delivering immediacy without unnecessary noise. Sculpted components and controlled dynamics work together to deliver the utmost in tactile driving experience.',
+    specs: { hp: '720 hp', torque: '700 lb-ft', topSpeed: '210 mph', acceleration: '2.8s' },
+    images: {
+      big: '/images/veritas/big.webp',
+      details: [
+        '/images/veritas/Valkyrie_1.webp',
+        '/images/veritas/Valkyrie_2.webp',
+        '/images/veritas/Valkyrie_3.webp'
+      ]
+    }
+  }
+];
+---
+
+<Layout title="Home">
+  <!-- Hero Section -->
+  <section class="min-h-screen flex items-center justify-center px-6 scroll-mt-20 relative overflow-hidden">
+    <!-- Background Image -->
+    <div class="absolute inset-0 -z-10">
+      <img
+        src="/background.jpg"
+        alt="Hero background"
+        class="w-full h-full object-cover"
+      />
+      <div class="absolute inset-0 bg-black/40"></div>
+    </div>
+
+    <div class="max-w-3xl text-center relative z-10">
+      <h2 class="text-3xl md:text-5xl font-semibold text-white">Luxury Minimal — Automotive Storytelling</h2>
+      <p class="mt-6 text-lg text-gray-200">A visual-first portfolio of five curated models. Scroll to explore each vehicle as its own narrative chapter.</p>
+    </div>
+  </section>
+
+  <!-- Sticky Models Navigation -->
+  <StickyModelsNav client:load models={models} />
+
+  <!-- Model Sections -->
+  {models.map((model, index) => (
+    <section
+      id={model.id}
+      class="min-h-screen flex items-center justify-center px-6 py-20 scroll-mt-20"
+    >
+      <div class="max-w-7xl w-full">
+        <div class="grid grid-cols-1 md:grid-cols-10 gap-8 items-start">
+          <!-- Left Content - 2 columns -->
+          <div class="md:col-span-2">
+            <h2 class="text-3xl md:text-4xl font-semibold mb-4">{model.name}</h2>
+            <p class="text-lg text-gray-600 mb-6 font-light">{model.tagline}</p>
+            
+            <p class="text-gray-700 text-sm leading-relaxed mb-6">
+              {model.description}
+            </p>
+
+            <!-- Specs -->
+            <div class="space-y-4 mb-6 py-4 border-y border-gray-200">
+              <div>
+                <p class="text-xs text-gray-500 uppercase tracking-widest">Horsepower</p>
+                <p class="text-xl font-semibold mt-1">{model.specs.hp}</p>
+              </div>
+              <div>
+                <p class="text-xs text-gray-500 uppercase tracking-widest">Torque</p>
+                <p class="text-xl font-semibold mt-1">{model.specs.torque}</p>
+              </div>
+              <div>
+                <p class="text-xs text-gray-500 uppercase tracking-widest">Top Speed</p>
+                <p class="text-xl font-semibold mt-1">{model.specs.topSpeed}</p>
+              </div>
+              <div>
+                <p class="text-xs text-gray-500 uppercase tracking-widest">0-60 mph</p>
+                <p class="text-xl font-semibold mt-1">{model.specs.acceleration}</p>
+              </div>
+            </div>
+
+            <!-- Navigation Button -->
+            <a
+              href={`/models/${model.id}`}
+              class="inline-block px-6 py-2 bg-gray-900 text-white rounded-md hover:bg-gray-800 transition-colors text-xs font-medium"
+            >
+              Explore {model.name}
+            </a>
+          </div>
+
+          <!-- Right Image - 8 columns -->
+          <div class="md:col-span-8 flex flex-col gap-8">
+            <!-- Big Image -->
+            <img
+              src={model.images.big}
+              alt={`${model.name} hero`}
+              class="w-full rounded-lg shadow-lg object-cover h-96"
+            />
+            
+            <!-- Three Detail Images -->
+            <div class="grid grid-cols-3 gap-6">
+              {model.images.details.map((img, idx) => (
+                <img
+                  src={img}
+                  alt={`${model.name} detail ${idx + 1}`}
+                  class="w-full rounded-lg shadow-md object-cover h-64"
+                />
+              ))}
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  ))}
+</Layout>
+
+<style>
+  html {
+    scroll-behavior: smooth;
+  }
+</style>

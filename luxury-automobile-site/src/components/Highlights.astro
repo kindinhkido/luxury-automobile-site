@@ -1,0 +1,15 @@
+---
+const { highlights } = Astro.props;
+---
+<section class="py-10 snap-start">
+  <div class="max-w-6xl mx-auto px-6">
+    <ul class="grid grid-cols-1 md:grid-cols-2 gap-4 text-gray-800 text-sm">
+      {highlights.map((h) => (
+        <li class="flex items-start gap-3">
+          <span class="w-8 h-8 rounded-full bg-slate-200 flex items-center justify-center text-primary text-xs font-semibold">✓</span>
+          <div>{h}</div>
+        </li>
+      ))}
+    </ul>
+  </div>
+</section>

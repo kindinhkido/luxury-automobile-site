@@ -1,0 +1,20 @@
+---
+const { title, tagline, image, minHeight } = Astro.props;
+---
+<section
+  class={`relative w-full flex items-end text-left text-white snap-start ${minHeight ? '' : ''}`}
+  style={`min-height: ${minHeight || '80vh'}`}
+>
+  <div
+    class="absolute inset-0 bg-cover bg-center"
+    style={`background-image: url(${image}); height: 100%; width: 100%;`}
+  ></div>
+  <div class="absolute inset-0 bg-gradient-to-b from-transparent to-black/40" />
+
+  <div class="relative max-w-6xl px-6 py-16 mx-auto z-10 fade-in">
+    <div class="max-w-2xl">
+      <h1 class="text-4xl font-semibold leading-tight">{title}</h1>
+      <p class="mt-3 text-lg opacity-90">{tagline}</p>
+    </div>
+  </div>
+</section>

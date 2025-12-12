@@ -1,0 +1,19 @@
+---
+import Header from './Header.tsx';
+import Footer from './Footer.tsx';
+import '../styles/global.css';
+---
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Luxury Automobile - {Astro.props.title ?? 'Home'}</title>
+  </head>
+  <body class="antialiased font-sans bg-muted text-primary">
+    <Header client:load />
+    <main class="w-full">
+      <slot />
+    </main>
+    <Footer client:load />
+  </body>
+</html>

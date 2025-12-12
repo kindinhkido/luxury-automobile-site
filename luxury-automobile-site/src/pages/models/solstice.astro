@@ -1,0 +1,66 @@
+---
+import Layout from '../../components/Layout.astro';
+import Hero from '../../components/Hero.astro';
+import Specs from '../../components/Specs.astro';
+import Highlights from '../../components/Highlights.astro';
+
+const images = {
+  hero: '/images/solstice/big.webp',
+  details: [
+    '/images/solstice/DBX S Alloy All Models.webp',
+    '/images/solstice/DBX S Exhaust All Models.webp',
+    '/images/solstice/DBX S Seat All Models.webp'
+  ]
+};
+
+const specs = [
+  { label: 'Horsepower', value: '480 hp' },
+  { label: 'Torque', value: '430 lb-ft' },
+  { label: 'Top Speed', value: '180 mph' },
+  { label: '0-60 mph', value: '4.2s' }
+];
+
+const highlights = [
+  'Hybrid-assisted performance',
+  'Elegant silhouette and natural light cabin',
+  'Intuitive driver controls',
+  'Advanced adaptive chassis"'
+];
+---
+
+<Layout title="Solstice">
+  <Hero
+    title="Solstice"
+    tagline="Subtle elegance in kinetic form."
+    image={images.hero}
+    minHeight={'85vh'}
+  />
+
+  <section class="max-w-6xl mx-auto px-6 py-10">
+    <div class="max-w-3xl">
+      <p class="text-gray-700 text-lg">
+        Solstice pairs a clean aesthetic with measured power — an extension of thoughtful engineering and beautiful materials. It embraces quiet confidence with modern hybrid efficiency and refined finishes.
+      </p>
+    </div>
+  </section>
+
+  <Highlights highlights={highlights} />
+
+  <Specs specs={specs} />
+
+  <section class="py-16">
+    <div class="max-w-6xl mx-auto px-6">
+      <h2 class="text-2xl font-light mb-12 text-gray-900">Design Details</h2>
+      <div class="grid gap-8 grid-cols-1 md:grid-cols-3">
+        {images.details.map((img, idx) => (
+          <img
+            src={img}
+            alt={`Solstice detail ${idx + 1}`}
+            class="rounded-lg shadow-md w-full object-cover h-96 md:h-full"
+          />
+        ))}
+      </div>
+    </div>
+  </section>
+
+</Layout>

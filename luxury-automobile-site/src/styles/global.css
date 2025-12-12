@@ -1,0 +1,31 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root{
+  --color-bg: #FAFBFC;
+  --color-primary: #0f1724;
+  --color-accent: #b7954a;
+}
+
+html, body, #root {
+  height: 100%;
+}
+
+/* Vertical scroll snapping for chapter-like sections */
+main {
+  scroll-snap-type: y proximity;
+}
+section {
+  scroll-snap-align: start;
+}
+
+/* Subtle animations and focus states */
+.fade-in {
+  animation: fadeIn 550ms ease-out both;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(8px); }
+  to { opacity: 1; transform: translateY(0); }
+}

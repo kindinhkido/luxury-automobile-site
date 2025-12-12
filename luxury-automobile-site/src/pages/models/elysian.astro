@@ -1,0 +1,59 @@
+---
+import Layout from '../../components/Layout.astro';
+import Hero from '../../components/Hero.astro';
+import Specs from '../../components/Specs.astro';
+import Highlights from '../../components/Highlights.astro';
+
+const images = {
+  hero: '/images/elysian/big.webp',
+  details: [
+    '/images/elysian/DB12 S All Models Exhaust.webp',
+    '/images/elysian/DB12 S All Models Hero detail.webp',
+    '/images/elysian/Db12 S All Models Wing.webp'
+  ]
+};
+
+const specs = [
+  { label: 'Horsepower', value: '420 hp' },
+  { label: 'Torque', value: '400 lb-ft' },
+  { label: 'Top Speed', value: '170 mph' },
+  { label: '0-60 mph', value: '5.1s' }
+];
+
+const highlights = [
+  'A serene cabin with glossy finishes',
+  'Low center of gravity and balanced ride',
+  'Hyper-unified material palette',
+  'Simple, elegant controls, unbiased by trends'
+];
+---
+
+<Layout title="Elysian">
+  <Hero title="Elysian" tagline="Quiet refinement in every detail." image={images.hero} minHeight={'85vh'} />
+
+  <section class="max-w-6xl mx-auto px-6 py-10">
+    <div class="max-w-3xl">
+      <p class="text-gray-700 text-lg">
+        Elysian focuses on the subtle digital comforts — invisibly enhancing the experience while preserving a minimal atmosphere. Thoughtful material choices and a human-centered interface maintain calm sophistication under every surface.
+      </p>
+    </div>
+  </section>
+
+  <Highlights highlights={highlights} />
+  <Specs specs={specs} />
+
+  <section class="py-16">
+    <div class="max-w-6xl mx-auto px-6">
+      <h2 class="text-2xl font-light mb-12 text-gray-900">Design Details</h2>
+      <div class="grid gap-8 grid-cols-1 md:grid-cols-3">
+        {images.details.map((img, idx) => (
+          <img
+            src={img}
+            alt={`Elysian detail ${idx + 1}`}
+            class="rounded-lg shadow-md w-full object-cover h-96 md:h-full"
+          />
+        ))}
+      </div>
+    </div>
+  </section>
+</Layout>
